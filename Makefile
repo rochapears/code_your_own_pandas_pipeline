@@ -66,6 +66,17 @@ pre-commits: requirements_quiet
 	$(PYTHON_INTERPRETER) -m pre_commit install
 	$(PYTHON_INTERPRETER) -m pre_commit run --all-files
 
+.PHONY: create_branch
+branch:
+	@read -p "Enter your name: " name; \
+	read -p "Enter JIRA ticket number: " ticket; \
+	read -p "Enter branch description: " desc; \
+	if [ -z "$$ticket" ]; then \
+		git checkout -b $$(echo "$$name/$$desc" | tr ' ' '-'); \
+	else \
+		git checkout -b $$(echo "$$name/$$ticket-$$desc" | tr ' ' '-'); \
+	fi
+
 
 #################################################################################
 # PROJECT DATA                                                                  #
