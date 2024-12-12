@@ -68,13 +68,25 @@ pre-commits: requirements_quiet
 
 
 #################################################################################
+# PROJECT DATA                                                                  #
+#################################################################################
+
+## Downloads the data from the NHS Digital website
+.PHONY: get_data
+get_data:
+	mkdir -p data/raw
+	wget -O data/raw/Practice_Level_Crosstab_Sep_24.zip https://files.digital.nhs.uk/A5/B4AB19/Practice_Level_Crosstab_Sep_24.zip
+	unzip -o data/raw/Practice_Level_Crosstab_Sep_24.zip -d data/raw
+
+
+#################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
 
 ## Run Pipeline
-.PHONY: run_example_pipeline
-run_pipeline: requirements_quiet
-	$(PYTHON_INTERPRETER) example_pipeline/pipeline.py
+.PHONY: run
+run: requirements_quiet
+	$(PYTHON_INTERPRETER) $(PROJECT_NAME)/pipeline.py
 
 ## Run all tests
 .PHONY: test
