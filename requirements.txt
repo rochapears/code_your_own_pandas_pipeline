@@ -1,13 +1,18 @@
+-e .
 black
 flake8
 ipython
 isort
 jupyterlab
+loguru
 matplotlib
 notebook
 numpy
 pandas
 pip
+pytest
+pytest-cov
 python-dotenv
+seaborn
 scikit-learn
--e .
+tqdm
