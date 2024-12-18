@@ -8,6 +8,7 @@ from loguru import logger
 
 from code_your_own_pandas_pipeline.config import RAW_DATA_DIR
 
+
 def read_mapping_data() -> pd.DataFrame:
     """
     Read the mapping data from the data folder.
@@ -22,10 +23,8 @@ def read_mapping_data() -> pd.DataFrame:
     logger.info(f"Reading mapping data from {file_path}")
 
     mapping_df = pd.read_csv(file_path)
-    
+
     return mapping_df
-
-
 
 
 def read_practice_crosstab_data() -> pd.DataFrame:
@@ -41,7 +40,7 @@ def read_practice_crosstab_data() -> pd.DataFrame:
     file_paths = [
         "Practice_Level_Crosstab_Jul_24.csv",
         "Practice_Level_Crosstab_Aug_24.csv",
-        "Practice_Level_Crosstab_Sep_24.csv",  
+        "Practice_Level_Crosstab_Sep_24.csv",
     ]
 
     practice_datasets = []
@@ -56,9 +55,3 @@ def read_practice_crosstab_data() -> pd.DataFrame:
     read_practice_crosstab_data = pd.concat(practice_datasets)
 
     return read_practice_crosstab_data
-
-
-    
-
-
-   
